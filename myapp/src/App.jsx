@@ -23,7 +23,7 @@ const BookingForm = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `http://localhost:5000/api/availability?date=${selectedDate}`
+        `https://restaurant-table-booking-system-1-w4qo.onrender.com?date=${selectedDate}`
       );
       setAvailableSlots(response.data.times);
     } catch (err) {
