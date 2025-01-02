@@ -23,9 +23,8 @@ const BookingForm = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-  `https://restaurant-table-booking-system-1-w4qo.onrender.com?date=${selectedDate}`
-);
-
+        `https://restaurant-table-booking-system-1-w4qo.onrender.com/api/availability?date=${selectedDate}` // Correct API URL for Render backend
+      );
       setAvailableSlots(response.data.times);
     } catch (err) {
       setError("Failed to fetch available slots");
@@ -54,13 +53,13 @@ const BookingForm = () => {
 
     try {
       const response = await axios.post(
-        "http://localhost:5000/api/booking",
+        "https://restaurant-table-booking-system-1-w4qo.onrender.com/api/booking", // Correct API URL for Render backend
         formData
       );
       setBookingConfirmed(true);
       setLoading(false);
     } catch (err) {
-      setError(err.response?.data?.error || "Failed to create booking. Please try again.");
+      setError(err.response?.data?.error || err.message || "Failed to create booking. Please try again.");
       setLoading(false);
     }
   };
