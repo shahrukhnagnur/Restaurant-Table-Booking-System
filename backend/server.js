@@ -1,9 +1,13 @@
 const express = require('express');
 const cors = require('cors');
 const app = express();
-const port = 5000;
 
-app.use(cors());
+const port = process.env.PORT || 5000;
+
+app.use(cors({
+  origin: 'https://restaurant-table-booking-system-beg6.vercel.app', 
+}));
+
 app.use(express.json()); 
 
 let bookings = [];
@@ -52,7 +56,6 @@ app.post('/api/booking', (req, res) => {
     booking: newBooking,
   });
 });
-
 
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
