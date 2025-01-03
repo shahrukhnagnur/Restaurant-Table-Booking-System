@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import './App.css'
+import './App.css';
 
 const BookingForm = () => {
   const [formData, setFormData] = useState({
@@ -23,11 +23,18 @@ const BookingForm = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://restaurant-table-booking-system-drab.vercel.app/?date=${selectedDate}` 
+        `https://restaurant-table-booking-system-drab.vercel.app/?date=${selectedDate}`
       );
-      setAvailableSlots(response.data.times);
+      
+      // Ensure that 'times' exists and is an array
+      if (Array.isArray(response.data.times)) {
+        setAvailableSlots(response.data.times);
+      } else {
+        setAvailableSlots([]); // Set to an empty array if 'times' is invalid
+      }
     } catch (err) {
       setError("Failed to fetch available slots");
+      setAvailableSlots([]); // Set available slots to empty if the request fails
     } finally {
       setLoading(false);
     }
