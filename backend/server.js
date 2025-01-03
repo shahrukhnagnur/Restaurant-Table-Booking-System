@@ -6,7 +6,8 @@ const port = process.env.PORT || 5000;
 
 app.use(cors({
   origin: 'https://restaurant-table-booking-system-beg6.vercel.app/', 
-  
+  methods:["POST","GET"],
+  credentials:true
 }));
 
 app.use(express.json()); 
