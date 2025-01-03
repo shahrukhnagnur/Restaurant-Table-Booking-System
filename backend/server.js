@@ -41,7 +41,7 @@ app.get('/api/availability', (req, res) => {
     .map((booking) => booking.time);
 
   const availableSlots = generateTimeSlots(date).filter((time) => !bookedTimes.includes(time));
-
+    console.log({message:err.message})
   res.json({ times: availableSlots });
 });
 
