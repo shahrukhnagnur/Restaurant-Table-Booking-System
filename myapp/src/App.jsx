@@ -23,7 +23,7 @@ const BookingForm = () => {
     setLoading(true);
     try {
       const response = await axios.get(
-        `https://restaurant-table-booking-system-j584.vercel.app/?date=${selectedDate}` // Correct API URL for Render backend
+        `https://restaurant-table-booking-system-drab.vercel.app/?date=${selectedDate}` 
       );
       setAvailableSlots(response.data.times);
     } catch (err) {
