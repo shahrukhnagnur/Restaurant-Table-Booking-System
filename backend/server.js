@@ -57,6 +57,11 @@ app.post('/api/booking', (req, res) => {
   });
 });
 
+app.post("/",(req,res)=>{
+  res.send("hello homepage");
+  
+})
+
 app.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
