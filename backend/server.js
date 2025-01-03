@@ -4,12 +4,21 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
-app.use(cors({
-  origin: 'https://restaurant-table-booking-system-beg6.vercel.app/', 
-  methods:["POST","GET"],
-  credentials:true
-}));
-
+const corsOptions = {
+  origin: function (origin, callback) {
+    const allowedOrigins = [
+      'https://restaurant-table-booking-system-beg6.vercel.app',
+      'https://restaurant-table-booking-system-jaul.vercel.app' 
+    ];
+    
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  }
+};
+app.use(cors(corsOptions));
 app.use(express.json()); 
 
 let bookings = [];
