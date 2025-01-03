@@ -7,9 +7,7 @@ const port = process.env.PORT || 5000;
 const corsOptions = {
   origin: function (origin, callback) {
     const allowedOrigins = [
-      'https://restaurant-table-booking-system-beg6.vercel.app',
-      'https://restaurant-table-booking-system-jaul.vercel.app' 
-    ];
+      'https://restaurant-table-booking-system-beg6.vercel.app'];
     
     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
       callback(null, true);
